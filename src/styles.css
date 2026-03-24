@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Tetris piece colors */
+  --color-tetris-board: #1a1a2e;
+  --color-tetris-empty: #0d0d22;
+  --color-tetris-I: #00f0f0;
+  --color-tetris-O: #f0f000;
+  --color-tetris-T: #a000f0;
+  --color-tetris-S: #00f000;
+  --color-tetris-Z: #f00000;
+  --color-tetris-L: #f0a000;
+  --color-tetris-J: #0000f0;
+
+  /* 2048 game colors */
+  --color-game2048-board: #bbada0;
+  --color-game2048-empty: #cdc1b4;
+  --color-game2048-tile2-bg: #eee4da;
+  --color-game2048-tile2-fg: #776e65;
+  --color-game2048-tile4-bg: #ede0c8;
+  --color-game2048-tile4-fg: #776e65;
+  --color-game2048-tile8-bg: #f2b179;
+  --color-game2048-tile8-fg: #f9f6f2;
+  --color-game2048-tile16-bg: #f59563;
+  --color-game2048-tile16-fg: #f9f6f2;
+  --color-game2048-tile32-bg: #f67c5f;
+  --color-game2048-tile32-fg: #f9f6f2;
+  --color-game2048-tile64-bg: #f65e3b;
+  --color-game2048-tile64-fg: #f9f6f2;
+  --color-game2048-tile128-bg: #edcf72;
+  --color-game2048-tile128-fg: #f9f6f2;
+  --color-game2048-tile256-bg: #edcc61;
+  --color-game2048-tile256-fg: #f9f6f2;
+  --color-game2048-tile512-bg: #edc850;
+  --color-game2048-tile512-fg: #f9f6f2;
+  --color-game2048-tile1024-bg: #edc53f;
+  --color-game2048-tile1024-fg: #f9f6f2;
+  --color-game2048-tile2048-bg: #edc22e;
+  --color-game2048-tile2048-fg: #f9f6f2;
+}
+
+:root {
+  --bg-base: #1b2838;
+  --bg-surface: #1e3044;
+  --bg-card: #213d56;
+  --accent: #66c0f4;
+  --accent-hover: #8ad4ff;
+  --accent-dim: #2a475e;
+  --text-primary: #c7d5e0;
+  --text-secondary: #8f98a0;
+  --text-bright: #ffffff;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(102, 192, 244, 0.3);
+  --success: #a4d007;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  background-color: var(--bg-base);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+code {
+  font-size: 0.9em;
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+pre code {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.page-wrap {
+  width: min(1080px, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+/* Hero section */
+.hero-section {
+  background: var(--bg-surface);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section label */
+.section-label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Steam-style game card */
+.game-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    border-color 200ms ease;
+}
+
+.game-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-color: var(--border-hover);
+}
+
+/* Nav link */
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 4px 2px;
+  transition: color 150ms ease;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.nav-link:hover,
+.nav-link.is-active {
+  color: var(--text-bright);
+}
+
+.rise-in {
+  animation: rise-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
