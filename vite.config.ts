@@ -3,9 +3,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { devtools } from '@tanstack/devtools-vite'
 import tsconfigPaths from 'vite-tsconfig-paths'
 import { paraglideVitePlugin } from '@inlang/paraglide-js'
-
+import { nitro } from 'nitro/vite';
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-
 import viteReact from '@vitejs/plugin-react'
 
 const config = defineConfig({
@@ -23,6 +22,7 @@ const config = defineConfig({
          enabled: true
       },
     }),
+    nitro(),
     viteReact({
       babel: {
         plugins: ['babel-plugin-react-compiler'],

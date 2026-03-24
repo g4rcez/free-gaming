@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@g4rcez/components": "3.0.1",
+    "@tailwindcss/vite": "^4",
     "@tanstack/query-db-collection": "latest",
     "@tanstack/react-db": "latest",
     "@tanstack/react-devtools": "latest",
@@ -26,13 +27,13 @@
     "@tanstack/react-start": "latest",
     "@tanstack/router-plugin": "^1.132.0",
     "lucide-react": "^0.545.0",
+    "motion": "^12",
+    "nitro": "3.0.260311-beta",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "@tailwindcss/vite": "^4",
     "tailwindcss": "^4",
-    "zod": "^4.3.6",
-    "motion": "^12",
     "use-typed-reducer": "^4.3.0",
+    "zod": "^4.3.6",
     "zustand": "5.0.12"
   },
   "devDependencies": {
