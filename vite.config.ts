@@ -18,7 +18,11 @@ const config = defineConfig({
       strategy: ['url', 'baseLocale'],
     }),
     tsconfigPaths({ projects: ['./tsconfig.json'] }),
-    tanstackStart(),
+    tanstackStart({ 
+      spa: {
+         enabled: true
+      },
+    }),
     viteReact({
       babel: {
         plugins: ['babel-plugin-react-compiler'],

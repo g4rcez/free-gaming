@@ -1,22 +1,23 @@
+import { getLocale } from '#/paraglide/runtime'
 import {
+  type TokenRemap,
   ComponentsProvider,
   createTokenStyles,
   defaultLightTheme,
 } from '@g4rcez/components'
+import { TanStackDevtools } from '@tanstack/react-devtools'
 import {
   HeadContent,
   Scripts,
+  createRootRoute,
   createRootRouteWithContext,
 } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
 import TanStackQueryDevtools from '../integrations/tanstack-query/devtools'
-import { getLocale } from '#/paraglide/runtime'
+import TanStackQueryProvider from '../integrations/tanstack-query/root-provider'
 import appCss from '../styles.css?url'
-
 import type { QueryClient } from '@tanstack/react-query'
 
 interface MyRouterContext {
@@ -30,12 +31,9 @@ const tokenRemap: TokenRemap = {
   },
 }
 
-export const Route = createRootRouteWithContext<MyRouterContext>()({
-  beforeLoad: async () => {
-    if (typeof document !== 'undefined') {
-      document.documentElement.setAttribute('lang', getLocale())
-    }
-  },
+export const Route = createRootRoute({
+  ssr: false,
+  shellComponent: RootDocument,
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
@@ -50,18 +48,12 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
-  shellComponent: RootDocument,
 })
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <ComponentsProvider>
-      <html
-        lang={getLocale()}
-        data-theme="dark"
-        className="dark"
-        suppressHydrationWarning
-      >
+      <html lang={getLocale()} data-theme="dark" className="dark">
         <head>
           <HeadContent />
         </head>
